@@ -10,7 +10,7 @@ port_max = 65535
 open_ports = []
 
 while True:
-    ip_add_entered = input("\nPlease enter the ip address that you want to scan: ")
+    ip_add_entered = st.write(input("\nPlease enter the ip address that you want to scan: "))
     try:
         ip_address_obj = ipaddress.ip_address(ip_add_entered)
         print("You entered a valid ip address.")
@@ -18,12 +18,10 @@ while True:
     except:
         print("You entered an invalid ip address")
 
-resp_dict={'1':['-v -sS','tcp'],'2':['-v -sU','udp'],'3':['-v -sS -sV -sC -A -O','tcp']}
-
 while True:
    
     print("Please enter the range of ports you want to scan in format: (example would be 60-120)")
-    port_range = input("Enter port range: ")
+    port_range =st.write( input("Enter port range: "))
     port_range_valid = port_range_pattern.search(port_range.replace(" ",""))
     if port_range_valid:
         port_min = int(port_range_valid.group(1))
